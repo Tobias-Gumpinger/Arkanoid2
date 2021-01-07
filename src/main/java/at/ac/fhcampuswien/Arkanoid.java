@@ -69,10 +69,15 @@ public class Arkanoid extends JPanel implements KeyListener, ActionListener {
         //speed.start(); //starts timer
         if(play) { //checks if "play" is true/player started the game
             if(new Rectangle(ballPosX, ballPosY, 20,20).intersects(new Rectangle(panelDirX+75, 990,75,10))) { //creates 20x20 rectangle around ball, sets the border for the ball on the panel and reflects it at the negative incoming angle, right half of panel
-                ballDirY = - ballDirY; //changes direction on impact on panel
+                if(ballDirX < 0) {
+                    ballDirY = -ballDirY; //changes direction on impact on panel
+                    ballDirX = -ballDirX;//changes direction on impact on panel
+                }else ballDirY = -ballDirY; //changes direction on impact on panel
             } else if(new Rectangle(ballPosX, ballPosY, 20,20).intersects(new Rectangle(panelDirX, 990,75,10))) { //creates 20x20 rectangle around ball, sets the border for the ball on the panel and reflects it at the negative incoming angle, left half of panel
-                ballDirY = -ballDirY; //changes direction on impact on panel
-                ballDirX = -ballDirX;//changes direction on impact on panel
+                if(ballDirX < 0) {
+                    ballDirY = -ballDirY; //changes direction on impact on panel
+                }else {ballDirY = -ballDirY; //changes direction on impact on panel
+                ballDirX = -ballDirX;}//changes direction on impact on panel
             }
 
             for(int i = 0; i < bricks.map.length; i++) { //sets border for bricks
