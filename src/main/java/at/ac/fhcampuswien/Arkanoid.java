@@ -53,6 +53,11 @@ public class Arkanoid extends JPanel implements KeyListener, ActionListener {
         graphics.fillRect(0, 0, 1902, 3); //setting border for color
         graphics.fillRect(1902, 0, 3, 1072); //setting border for color
 
+        //Score
+        graphics.setColor(Color.white);
+        graphics.setFont(new Font("serif",Font.BOLD,25));
+        graphics.drawString(""+score,1800,30);
+
         //panel
         graphics.setColor(Color.BLACK); //color of panel
         graphics.fillRect(panelDirX, 990, 150, 10); //creates panel and defines position of panel plus size of panel
