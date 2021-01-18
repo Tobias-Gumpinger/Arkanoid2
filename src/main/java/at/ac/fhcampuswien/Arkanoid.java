@@ -84,6 +84,11 @@ public class Arkanoid extends JPanel implements KeyListener, ActionListener {
             graphics.drawString("Neustart mit Enter",560,600);
         }
 
+        //Score
+        graphics.setColor(Color.white);
+        graphics.setFont(new Font("serif",Font.BOLD,25));
+        graphics.drawString(""+score,1800,30);
+
         //panel
         graphics.setColor(Color.BLACK); //color of panel
         graphics.fillRect(panelDirX, 950, 150, 10); //creates panel and defines position of panel plus size of panel
