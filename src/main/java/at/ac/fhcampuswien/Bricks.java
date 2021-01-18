@@ -13,8 +13,8 @@ public class Bricks {
                 map[i][j] = 1; //makes sure only bricks with value of 1 get displayed
             }
         }
-        brickWidth = 1750/columns; //sets width of bricks
-        brickHeight = 500/rows; //sets height of bricks
+        brickWidth = 1100/columns; //sets width of bricks
+        brickHeight = 450/rows; //sets height of bricks
     }
     public void draw(Graphics2D graphics2D) {
         for(int i = 0; i < map.length; i++) {
