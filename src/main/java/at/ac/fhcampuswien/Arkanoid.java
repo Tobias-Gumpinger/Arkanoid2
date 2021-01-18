@@ -165,8 +165,8 @@ public class Arkanoid extends JPanel implements KeyListener, ActionListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) { //if right arrow key is pressed then...
-            if (panelDirX >= 1770) { //checks if panel wants to go outside border
-                panelDirX = 1770; //fixes panel at border
+            if (panelDirX >= 1130) { //checks if panel wants to go outside border
+                panelDirX = 1130; //fixes panel at border
             } else moveRight(); //if not at border input from key listener gets passed
         }
         if(e.getKeyCode() == KeyEvent.VK_LEFT) { //if left arrow key is pressed then...
