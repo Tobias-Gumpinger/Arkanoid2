@@ -28,7 +28,7 @@ public class App {
     public static void main(String[] args) {
         JFrame object = new JFrame(); // the window object, creates the window
         Arkanoid game = new Arkanoid(); //object Arkanoid handed over to JFrame
-        object.setBounds(10,10,1280,1024); //x and y define the position where the window opens, plus window size
+        object.setBounds(10,10,1280,800); //x and y define the position where the window opens, plus window size
         object.setTitle("Arkanoid"); //title of window (top left corner)
         object.setResizable(false); //fixed size of window
         object.setVisible(true); //needs to be set true to render the window
