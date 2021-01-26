@@ -17,7 +17,7 @@ public class Arkanoid extends JPanel implements KeyListener, ActionListener {
     private boolean play = false; //game starts paused
 
     private int score = 0; //no score at start of game, gets added later
-    private int totalBricks = 72; //number of bricks, gets added later for auto pause function when no bricks are left
+    private int totalBricks = 96; //number of bricks, gets added later for auto pause function when no bricks are left
 
     private Timer speed; //variable for setting speed
     private int speedSet = 20; //set speed
@@ -67,10 +67,10 @@ public class Arkanoid extends JPanel implements KeyListener, ActionListener {
             ballDirY = 0;
             graphics.setColor(Color.black);
             graphics.setFont(new Font("sanserif",Font.BOLD,30));
-            graphics.drawString("* * *G E W O N N E N * * *",190,300);
+            graphics.drawString("* * *G E W O N N E N * * *",460,300);
 
             graphics.setFont(new Font("sanserif",Font.BOLD,20));
-            graphics.drawString("Neustart mit Enter",230,350);
+            graphics.drawString("Neustart mit Enter",560,350);
         }
         if (ballPosY > 800){
             play= false;
@@ -84,13 +84,8 @@ public class Arkanoid extends JPanel implements KeyListener, ActionListener {
             graphics.drawString("Neustart mit Enter",560,600);
         }
 
-        //Score
-        graphics.setColor(Color.white);
-        graphics.setFont(new Font("serif",Font.BOLD,25));
-        graphics.drawString(""+score,1800,30);
-
-        //Start
-        if (ballPosX == 640 && ballPosY == 600 && totalBricks == 72){
+        //start
+        if (ballPosX == 640 && ballPosY == 600 && totalBricks == 96){
             graphics.setColor(Color.black);
             graphics.setFont(new Font("sanserif",Font.BOLD,40));
             graphics.drawString("Press Enter to Start",460,550);
@@ -109,7 +104,7 @@ public class Arkanoid extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //speed.start(); //starts timer
+        speed.start(); //starts timer
         if(play) { //checks if "play" is true/player started the game
             if(new Rectangle(ballPosX, ballPosY, 20,20).intersects(new Rectangle(panelDirX + 75, 720,40,10))) { //mid right; creates 20x20 rectangle around ball, sets the border for the ball on the panel and always directs it to the right side, right half of panel
                 if(ballDirX < 0 && ballDirX != -3) {
@@ -119,10 +114,10 @@ public class Arkanoid extends JPanel implements KeyListener, ActionListener {
                     ballDirY = -ballDirY; //changes direction on impact on panel
                 } else if (ballDirX == -3) {
                     ballDirY = -ballDirY; //changes direction on impact on panel
-                    ballDirX = -ballDirX - 1;//changes direction on impact on panel
+                    ballDirX = -ballDirX - 1;//changes speed (angle) on impact on panel
                 }else if(ballDirX == 3){
                     ballDirY = -ballDirY; //changes direction on impact on panel
-                    ballDirX = ballDirX - 1;
+                    ballDirX = ballDirX - 1; //changes speed (angle) on impact on panel
                 }
             } else if(new Rectangle(ballPosX, ballPosY, 20,20).intersects(new Rectangle(panelDirX + 35, 720,40,10))) { //mid left; creates 20x20 rectangle around ball, sets the border for the ball on the panel and always directs it to the left side, left half of panel
                 if(ballDirX < 0 && ballDirX != -3) {
@@ -132,18 +127,18 @@ public class Arkanoid extends JPanel implements KeyListener, ActionListener {
                     ballDirX = -ballDirX;//changes direction on impact on panel
                 }else if(ballDirX == -3) {
                     ballDirY = -ballDirY; //changes direction on impact on panel
-                    ballDirX = ballDirX + 1;
+                    ballDirX = ballDirX + 1; //changes speed (angle) on impact on panel
                 }else if(ballDirX == 3) {
                     ballDirY = -ballDirY; //changes direction on impact on panel
-                    ballDirX = -ballDirX + 1;//changes direction on impact on panel
+                    ballDirX = -ballDirX + 1; //changes speed (angle) on impact on panel
                 }
             } else if(new Rectangle(ballPosX, ballPosY, 20,20).intersects(new Rectangle(panelDirX + 115, 720,35,10))) { //far right; creates 20x20 rectangle around ball, sets the border for the ball on the panel and always directs it to the right side, right half of panel
                 if(ballDirX < 0 && ballDirX > -3) {
                     ballDirY = -ballDirY; //changes direction on impact on panel
-                    ballDirX = -ballDirX + 1;//changes direction on impact on panel
+                    ballDirX = -ballDirX + 1; //changes speed (angle) on impact on panel
                 }else if(ballDirX > 0 && ballDirX < 3) {
                     ballDirY = -ballDirY; //changes direction on impact on panel
-                    ballDirX = ballDirX + 1;
+                    ballDirX = ballDirX + 1; //changes speed (angle) on impact on panel
                 } else if(ballDirX == -3) {
                     ballDirY = -ballDirY; //changes direction on impact on panel
                     ballDirX = -ballDirX;//changes direction on impact on panel
@@ -153,10 +148,10 @@ public class Arkanoid extends JPanel implements KeyListener, ActionListener {
             } else if(new Rectangle(ballPosX, ballPosY, 20,20).intersects(new Rectangle(panelDirX, 720,35,10))) { //far left; creates 20x20 rectangle around ball, sets the border for the ball on the panel and always directs it to the left side, left half of panel
                 if (ballDirX < 0 && ballDirX > -3) {
                     ballDirY = -ballDirY; //changes direction on impact on panel
-                    ballDirX = ballDirX -1;
+                    ballDirX = ballDirX -1; //changes speed (angle) on impact on panel
                 }else if(ballDirX > 0 && ballDirX < 3) {
                     ballDirY = -ballDirY; //changes direction on impact on panel
-                    ballDirX = -ballDirX - 1;//changes direction on impact on panel
+                    ballDirX = -ballDirX - 1; //changes speed (angle) on impact on panel
                 } else if(ballDirX == -3) {
                     ballDirY = -ballDirY; //changes direction on impact on panel
                 } else if(ballDirX == 3) {
@@ -223,8 +218,8 @@ public class Arkanoid extends JPanel implements KeyListener, ActionListener {
                 panelDirX = 1; //fixes panel at border
             } else moveLeft(); //if not at border input from key listener gets passed
         }
-        if (e.getKeyCode() == KeyEvent.VK_ENTER){
-            if (!play){
+        if (e.getKeyCode() == KeyEvent.VK_ENTER){ //listens to input from Enter key
+            if (!play){ //if play is false (pause) -> pressing Enter resets everything to default (start) values
                 play = true;
                 ballPosX = 640;
                 ballPosY = 600;
@@ -232,7 +227,7 @@ public class Arkanoid extends JPanel implements KeyListener, ActionListener {
                 ballDirY = -3;
                 panelDirX = 565;
                 score = 0;
-                totalBricks = 72;
+                totalBricks = 96;
                 bricks = new Bricks(8,12);
 
                 repaint();
